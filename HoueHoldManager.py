@@ -109,10 +109,10 @@ elif choice==2:
        print('-',i)
 
 else:
-   no_of_member=int(input('Enter the number of family memeber \nMaximum number :10'))
+   no_of_member=int(input('Enter the number of family memeber \nMaximum number :10 : '))
    names=list()
    for i in range(no_of_member):
-      name=input('Enter the name or role of the family member')
+      name=input('Enter the name or role of the family member : ')
       names.append(name)
    work_time_start=list()
    work_time_end=list()
@@ -141,5 +141,6 @@ else:
              recom.append(names[m])
       return recom
    for n in range(no_of_work):
-      print(f'The task {work_list[n]} can be done only by the : {compare(work_list_time_end[n],work_list_time_start[n])}')
-
+      print(f"The task {work_list[n]} can be done by : ")
+      for i in compare(work_list_time_end[n],work_list_time_start[n]):
+         print('-',i)
