@@ -51,7 +51,7 @@ elif choice==2:
     "Sandwich": ['bread', 'butter', 'cheese', 'vegetables'],
     "Salad": ['lettuce', 'tomato', 'cucumber', 'olive oil', 'lemon juice'],
     "Dal": ['lentils', 'water', 'salt', 'turmeric', 'garlic'],
-    "Rice": ['rice', 'water', 'salt'],
+    "Rice": ['rice','salt'],
     "Chapati": ['wheat flour', 'water', 'salt'],
     "Smoothie": ['banana', 'milk', 'honey', 'nuts'],
     "Maggie": ['instant noodles', 'water', 'spices'],
@@ -107,3 +107,39 @@ elif choice==2:
     print("According to availability you can make ")
     for i in recom:
        print('-',i)
+
+else:
+   no_of_member=int(input('Enter the number of family memeber \nMaximum number :10'))
+   names=list()
+   for i in range(no_of_member):
+      name=input('Enter the name or role of the family member')
+      names.append(name)
+   work_time_start=list()
+   work_time_end=list()
+   work_list=list()
+   work_list_time_start=list()
+   work_list_time_end=list()
+   for j in range(no_of_member): # working time of family member .
+     a1=int(input(f'Enter the start of work time of {names[j]}: '))
+     work_time_start.append(a1);
+     a2=int(input(f'Enter the end of work time of {names[j]}: '))
+   work_time_end.append(a2)
+   no_of_work=int(input("Enter the number of work you have : "))
+   for k in range(no_of_work):
+     work=input('Enter the work : ')
+     work_list.append(work)
+     start_work=int(input(f'Enter the start of the work {work_list[k]} : '))
+     work_list_time_start.append(start_work)
+     end_work=int(input(f'Enter the end of the work {work_list[k]} : '))
+     work_list_time_end.append(end_work)
+   
+   def compare(end,str):
+      recom=list()
+      recom.clear()
+      for m in range(no_of_member):
+         if end<work_time_start[m] or str>work_time_start[m]:
+             recom.append(names[m])
+      return recom
+   for n in range(no_of_work):
+      print(f'The task {work_list[n]} can be done only by the : {compare(work_list_time_end[n],work_list_time_start[n])}')
+
