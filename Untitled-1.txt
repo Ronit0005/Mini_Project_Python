@@ -1,0 +1,5 @@
+PS C:\Users\ronit2007\Desktop\ronjava\Mini_Project_python> & C:/Users/ronit2007/AppData/Local/Microsoft/WindowsApps/python3.11.exe c:/Users/ronit2007/Desktop/ronjava/Mini_Project_Python/GurgaonCityHousingPrice.py
+Traceback (most recent call last):
+  File "c:\Users\ronit2007\Desktop\ronjava\Mini_Project_Python\GurgaonCityHousingPrice.py", line 11, in <module>
+    from sklearn.metrics import root_mean_square
+ImportError: cannot import name 'root_mean_square' from 'sklearn.metrics' (C:\Users\ronit2007\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\sklearn\metrics\__init__.py
