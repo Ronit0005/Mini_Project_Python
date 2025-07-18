@@ -64,20 +64,21 @@ new_test2=pd.DataFrame(new_test2,columns=new_features,index=test_set.index)
 # Linear Regression 
 lin_reg=LinearRegression()
 lin_reg.fit(housing_prepared,housing_labels)
-lin_pre=lin_reg.predict(new_test2)
-lin_rmse=root_mean_squared_error(test_labels,lin_pre)
+lin_pre=lin_reg.predict(housing_prepared)
+lin_rmse=root_mean_squared_error(housing_labels,lin_pre)
 print("Linear Regression :",int(lin_rmse))
 
 # Decision Tree :-
 dec_tree=DecisionTreeRegressor(random_state=42)
 dec_tree.fit(housing_prepared,housing_labels)
-dec_pre=dec_tree.predict(new_test2)
-dec_rmse=root_mean_squared_error(test_labels,dec_pre)
+dec_pre=dec_tree.predict(housing_prepared)
+dec_rmse=root_mean_squared_error(housing_labels,dec_pre)
 print("Decision Tree :",int(dec_rmse))
 
 # Random Forest :-
 ran_for=RandomForestRegressor()
 ran_for.fit(housing_prepared,housing_labels)
-ran_pre=ran_for.predict(new_test2)
-ran_rmse=root_mean_squared_error(test_labels,ran_pre)
+ran_pre=ran_for.predict(housing_prepared)
+ran_rmse=root_mean_squared_error(housing_labels,ran_pre)
 print("Random Forest :",int(ran_rmse))
+
