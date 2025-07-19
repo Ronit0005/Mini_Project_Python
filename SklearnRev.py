@@ -11,6 +11,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import root_mean_squared_error
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.ensemble import RandomForestRegressor
+from sklearn.model_selection import cross_val_score
 
 # Loading the data 
 main_data =pd.read_csv("housing.csv")
@@ -64,21 +65,21 @@ new_test2=pd.DataFrame(new_test2,columns=new_features,index=test_set.index)
 # Linear Regression 
 lin_reg=LinearRegression()
 lin_reg.fit(housing_prepared,housing_labels)
-lin_pre=lin_reg.predict(housing_prepared)
-lin_rmse=root_mean_squared_error(housing_labels,lin_pre)
-print("Linear Regression :",int(lin_rmse))
+lin_cross=-cross_val_score(lin_reg,housing_prepared,housing_labels,
+                          scoring="neg_root_mean_squared_error",cv=10)
+print("Error in linear regression :",lin_cross.mean())
 
 # Decision Tree :-
 dec_tree=DecisionTreeRegressor(random_state=42)
 dec_tree.fit(housing_prepared,housing_labels)
-dec_pre=dec_tree.predict(housing_prepared)
-dec_rmse=root_mean_squared_error(housing_labels,dec_pre)
-print("Decision Tree :",int(dec_rmse))
+dec_cross=-cross_val_score(dec_tree,housing_prepared,housing_labels,
+                          scoring="neg_root_mean_squared_error",cv=10)
+print("Error in decision tree regressor :",dec_cross.mean())
 
 # Random Forest :-
 ran_for=RandomForestRegressor()
 ran_for.fit(housing_prepared,housing_labels)
-ran_pre=ran_for.predict(housing_prepared)
-ran_rmse=root_mean_squared_error(housing_labels,ran_pre)
-print("Random Forest :",int(ran_rmse))
+for_cross=-cross_val_score(ran_for,housing_prepared,housing_labels,
+                          scoring="neg_root_mean_squared_error",cv=10)
+print("Error in random forest regressor :",for_cross.mean())
 
